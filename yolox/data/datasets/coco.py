@@ -39,8 +39,8 @@ class COCODataset(CacheDataset):
     def __init__(
         self,
         data_dir=None,
-        json_file="instances_train2017.json",
-        name="train2017",
+        json_file="train.json",
+        name="train",
         img_size=(416, 416),
         preproc=None,
         cache=False,
@@ -56,11 +56,11 @@ class COCODataset(CacheDataset):
             preproc: data augmentation strategy
         """
         if data_dir is None:
-            data_dir = os.path.join(get_yolox_datadir(), "COCO")
+            data_dir = os.path.join(get_yolox_datadir())
         self.data_dir = data_dir
         self.json_file = json_file
 
-        self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+        self.coco = COCO(os.path.join(self.data_dir, self.json_file))
         remove_useless_info(self.coco)
         self.ids = self.coco.getImgIds()
         self.num_imgs = len(self.ids)
@@ -143,7 +143,7 @@ class COCODataset(CacheDataset):
     def load_image(self, index):
         file_name = self.annotations[index][3]
 
-        img_file = os.path.join(self.data_dir, self.name, file_name)
+        img_file = os.path.join(self.data_dir, file_name)
 
         img = cv2.imread(img_file)
         assert img is not None, f"file named {img_file} not found"
