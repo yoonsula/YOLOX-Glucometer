@@ -67,7 +67,7 @@ class COCODataset(CacheDataset):
         self.class_ids = sorted(self.coco.getCatIds())
         self.cats = self.coco.loadCats(self.coco.getCatIds())
         self._classes = tuple([c["name"] for c in self.cats])
-        self.name = name
+        self.name = self.json_file[:-5]
         self.img_size = img_size
         self.preproc = preproc
         self.annotations = self._load_coco_annotations()
@@ -124,7 +124,6 @@ class COCODataset(CacheDataset):
             if "file_name" in im_ann
             else "{:012}".format(id_) + ".jpg"
         )
-
         return (res, img_info, resized_info, file_name)
 
     def load_anno(self, index):

@@ -13,15 +13,16 @@ class Exp(MyExp):
         self.depth = 0.33
         self.width = 0.50
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
+        self.num_classes = 12
+        # seed
+        self.seed = 241113
         
         # Define yourself dataset path
         self.data_dir = None
         self.train_ann = "train.json"
-        self.val_ann = "valid.json"
+        self.val_ann = "validation.json"
         self.test_ann = "test.json"
 
-        self.num_classes = 12
-
-        self.max_epoch = 300
+        self.max_epoch = 500
         self.data_num_workers = 4
         self.eval_interval = 1

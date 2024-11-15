@@ -383,7 +383,7 @@ class Trainer:
 
         self.save_ckpt("last_epoch", update_best_ckpt, ap=ap50_95)
         if self.save_history_ckpt:
-            self.save_ckpt(f"epoch_{self.epoch + 1}", ap=ap50_95)
+            self.save_ckpt(f"epoch_{self.epoch + 10}", ap=ap50_95)
 
         if self.args.logger == "mlflow":
             metadata = {

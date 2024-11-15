@@ -11,7 +11,7 @@ ninja
 tabulate
 psutil
 tensorboard
-
+wandb
 # verified versions
 # pycocotools corresponds to https://github.com/ppwwyyxx/cocoapi
 pycocotools>=2.0.2
